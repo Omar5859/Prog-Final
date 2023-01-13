@@ -132,9 +132,31 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		//}
 		break;
 
+	case EDIT_STAT:
+		if (pSelectedStat != NULL) {
+			pSelectedStat->Edit();
+			pOut->ClearDrawArea();
+			UpdateInterface();
+			pOut->ClearStatusBar();
+		}
+		break; 
+
 	case SAVE:
 		pAct = new Save(this);
 		break;
+
+	case DEL: 
+		pOut->PrintMessage("Delete");
+		if (pSelectedStat != NULL) {
+			pt.x = ArrX[pSelectedStat->GetID()].first;
+				pt.y = ArrY[pSelectedStat->GetID()].first;
+			pOut->DrawAssign(pt,40 , 40,"");
+		}
+		 pOut->ClearDrawArea(); 
+		 //UpdateInterface();
+		 pOut->ClearStatusBar();
+
+		break; 
 
 	case EXIT:
 		///create Exit Action here
@@ -428,5 +450,4 @@ ApplicationManager::~ApplicationManager()
 		delete ConnList[i];
 	delete pIn;
 	delete pOut;
-
 }

@@ -10,6 +10,16 @@ AddConnector::AddConnector(ApplicationManager* pAppManager):Action(pAppManager)
 	pDst = NULL;
 }
 
+void AddConnector::setSrc(Statement* S1)
+{
+	pSrc = S1;
+}
+
+void AddConnector::setDst(Statement* S2)
+{
+	pDst = S2;
+}
+
 void AddConnector::ReadActionParameters()
 {
 	Input* pIn = pApp->GetInput();
@@ -22,9 +32,10 @@ void AddConnector::ReadActionParameters()
 
 		pIn->GetPointClicked(From);
 		pOut->ClearStatusBar();
-		pSrc = pApp->GetStatement(From);
 
 	} while (pSrc = NULL);
+
+	setSrc(pApp->GetStatement(From));
 
 	do
 	{
@@ -33,9 +44,10 @@ void AddConnector::ReadActionParameters()
 		pIn->GetPointClicked(To);
 		pOut->ClearStatusBar();
 
-		pDst = pApp->GetStatement(To);
-
 	} while (pDst = NULL);
+
+	setDst(pApp->GetStatement(To));
+
 }
 
 void AddConnector::Execute()
@@ -43,9 +55,6 @@ void AddConnector::Execute()
 	ReadActionParameters();
 	
 	Connector* pConn = new Connector(pSrc, pDst);
-
-	pConn->setStartPoint(pSrc->getvStatY().second);
-	pConn->setEndPoint(pDst->getvStatY().first);
 
 	pApp->AddConnectorList(pConn);
 }

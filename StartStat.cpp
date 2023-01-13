@@ -30,7 +30,12 @@ void StartStat::Draw(Output* pOut) const
 void StartStat::UpdateStatementText()
 {}
 
-Point StartStat::getOutlet()
+Point StartStat::getInlet() const
+{
+	return Inlet;
+}
+
+Point StartStat::getOutlet() const
 {
 	return Outlet;
 }
@@ -42,3 +47,16 @@ void StartStat::Save(ofstream& myfile)
 
 	myfile << endl;
 }
+void StartStat::Edit() {}
+
+/*
+ void StartStat::Load(ifstream& takefile)
+{
+
+	takefile >>"  " >> ID >> "  " >> CenterPoint.x >> "  " >> CenterPoint.y >> "  ";
+
+	UpdateStatementText();
+}*/
+
+
+//Commented due to error

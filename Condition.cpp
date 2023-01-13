@@ -70,19 +70,14 @@ void Condition::UpdateStatementText()
 	}
 }
 
-Point Condition::getInlet()
+Point Condition::getInlet() const
 {
 	return Inlet;
 }
 
-Point Condition::getOutlet()
+Point Condition::getOutlet() const
 {
 	return Outlet;
-}
-
-Point Condition::getOutlet2()
-{
-	return Outlet2;
 }
 
 void Condition::Save(ofstream& myfile)
@@ -92,3 +87,11 @@ void Condition::Save(ofstream& myfile)
 
 	myfile << endl;
 }
+void Condition::Edit() {}
+
+/*
+void Condition::Load(ifstream& takefile)
+{
+	myfile >> "COND" >> "  " >> ID >> "  " >> CenterPoint.x >> "  " >>  CenterPoint.y >> "  " >> LHS >> "  " >> Operation >> "  " >> RHS;
+
+}*/

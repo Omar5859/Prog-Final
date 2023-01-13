@@ -16,6 +16,9 @@ class AddConnector : public Action
 public:
 	AddConnector(ApplicationManager* pAppManager);
 
+	void setSrc(Statement* S1);
+	void setDst(Statement* S2);
+
 	virtual void ReadActionParameters();
 
 	virtual void Execute();

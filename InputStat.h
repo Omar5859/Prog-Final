@@ -1,13 +1,18 @@
-#ifndef START_STAT_H
-#define START_STAT_H
+#ifndef INPUT_STAT_H
+#define INPUT_STAT_H
 
 #include "Statements/Statement.h"
 #include "ApplicationManager.h"
 
-class StartStat : public Statement
+//Input statement class
+//Input  statement 
+class InputStat : public Statement
 {
 private:
-	Connector* pConn;	//start Stat has one Connector to next statement
+
+	double InpV; //value written
+
+	Connector* pConn;	//Input Stat. has one Connector to next statement
 	ApplicationManager* pApp;
 
 	Point Inlet;
@@ -16,7 +21,11 @@ private:
 	virtual void UpdateStatementText();
 
 public:
-	StartStat(Point Center);
+	InputStat(Point Center, double value);
+
+	InputStat(ApplicationManager* Pointer);
+
+	void setInpV(double R);
 
 	virtual Point getInlet() const;
 	virtual Point getOutlet() const;
@@ -27,6 +36,8 @@ public:
 	void Edit(); 
 
 	/*void Load(ifstream& takefile);*/
+
 };
+
 
 #endif

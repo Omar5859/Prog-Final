@@ -26,10 +26,12 @@ public:
 	void setRHS(double R);
 
 	void Save(ofstream& myfile);
+	void Edit(); 
 
-	Point getInlet();
-	Point getOutlet();
-	Point getOutlet2();
+	virtual Point getInlet() const;
+	virtual Point getOutlet() const;
+
+	/*void Load(ifstream& takefile);*/
 
 	virtual void Draw(Output* pOut) const;
 };
